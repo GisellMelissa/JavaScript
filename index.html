@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <div class="navigation-logo">
+            <img src="./images/Logo-Master-Loans.png" alt="" width="220px">
+        </div>
+        <nav class="navigation">
+            <ul class="navigation-bar">
+                <li class="navigation-bar-item">
+                    <a href="./sections/nosotros.html">¿Quiénes somos?</a>
+                </li>
+                <li class="navigation-bar-item">
+                    <a href="./index.html">Simulador de Crédito</a>
+                </li>
+                <li class="navigation-bar-item">
+                    <a href="./sections/solicitud.html">Solicita tu Crédito</a>
+                </li>
+                <li class="navigation-bar-item">
+                    <a href="./sections/beneficios.html">Beneficios</a>
+                </li>
+                <li class="navigation-bar-item">
+                    <a href="./sections/contacto.html">Ayuda</a>
+                </li>
+            </ul>
+        </nav>
+    </header>    
+    <h1 class="simulator-title">Simula y Solicita tu Crédito en Línea</h1>
+    <p class="simulator-paragraph">El objetivo de este formulario es conocer un poco de tus intereses para así brindarte una asesoría mas precisa. <br> En MasterLoans manejamos interes muy bajos <strong>¡Permítenos ser parte de tu emprendimiento!</strong></p>
+    <section>
+        <form>
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <div class="double-input">
+                  <div class="form-input-container">
+                    <label for="fname">Nombre</label>
+                    <input type="text" id="fname" placeholder="Alejandro" minlength="3" required>
+                  </div>
+                  <div class="form-input-container">
+                    <label for="lname">Apellido</label>
+                    <input type="text" id="lname" placeholder="García" required>
+                  </div>
+                </div>
+                <div class="double-input">
+                  <div class="form-input-container">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="alejandro01@gmail.com" required>
+                  </div>
+                  <div class="form-input-container">
+                    <label for="phone">Teléfono</label>
+                    <input type="number" id="phone" placeholder="123456789" required>
+                  </div>
+                </div>
+              </fieldset>
+          <fieldset>
+            <legend>Préstamo Deseado</legend>
+            <div class="double-input">
+              <div class="form-input-container">
+                <label for="installments">Número de Cuotas:</label>
+                <select>
+                  <option value="number installments">12</option>
+                  <option value="number installments">24</option>
+                  <option value="number installments">36</option>
+                  <option value="number installments">48</option>
+                </select>
+              </div>
+              <div>
+                <label for="loans">Monto Apróximado del Préstamo:</label>
+                <input type="value" id="value" placeholder="Desde 3'000.000 a 10'000.000" required>
+              </div>
+              <button class="button" type="submit">Realizar Simulación</button>
+            </form>
+            </div>
+      </section>
+    <script src="./main.js"></script>
+</body>
+</html>
