@@ -114,9 +114,17 @@ input, select {
   padding: 8px;
   height: 35px;
 }
-.simulator-paragraph{
+#simulator-paragraph{
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+#simulator-title {
+  text-align: center;
+}
+
+#resultado {
+  color: #5f00f7;
 }
