@@ -5,34 +5,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Simulador de Préstamo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
   <header>
     <div class="navigation-logo">
-      <img src="./images/Logo-Master-Loans.png" alt="" width="220px">
+      <img src="../images/Logo-Master-Loans.png" alt="" width="220px">
     </div>
     <nav class="navigation">
       <ul class="navigation-bar">
         <li class="navigation-bar-item">
-          <a href="./sections/nosotros.html">¿Quiénes somos?</a>
+          <a href="../inicio.html">Inicio</a>
         </li>
         <li class="navigation-bar-item">
-          <a href="./index.html">Simulador de Crédito</a>
+          <a href="../simulador.html">Simulador de Crédito</a>
         </li>
         <li class="navigation-bar-item">
-          <a href="./sections/solicitud.html">Solicita tu Crédito</a>
+          <a href="../sections/solicitud.html">Solicita tu Crédito</a>
         </li>
         <li class="navigation-bar-item">
-          <a href="./sections/beneficios.html">Beneficios</a>
+          <a href="../sections/beneficios.html">Beneficios</a>
         </li>
         <li class="navigation-bar-item">
-          <a href="./sections/contacto.html">Ayuda</a>
+          <a href="../sections/contacto.html">Ayuda</a>
         </li>
       </ul>
     </nav>
@@ -72,10 +72,10 @@
           <div class="form-input-container">
             <label for="installments">Número de Cuotas:</label>
             <select id="installments">
-              <option value="number installments">12</option>
-              <option value="number installments">24</option>
-              <option value="number installments">36</option>
-              <option value="number installments">48</option>
+              <option value="1">12</option>
+              <option value="2">24</option>
+              <option value="3">36</option>
+              <option value="4">48</option>
             </select>
           </div>
           <div>
@@ -83,11 +83,11 @@
             <input type="value" id="loan" placeholder="Desde 3'000.000 a 10'000.000" required>
           </div>
           <button class="button" type="submit">Realizar Simulación</button>
-          <div class="resultado">.</div>
+          <div id="resultado">.</div>
     </form>
     </div>
   </section>
-  <script src="./main.js"></script>
+  <script src="../main.js"></script>
 </body>
 
 </html>

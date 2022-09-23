@@ -1,10 +1,11 @@
 function validateAmount(amount) {
-    if (amount <= 8000000 && amount >= 3000000) {
+    if (amount <= 10000000 && amount >= 3000000) {
         return true;
     }
     return false;
 }
 
+// Escribe,e que hay que hacer
 function getOptionSelected(option) {
     const loanOptions = [
         {option: 1, text: "12 Cuotas", percent: 1.02, quantity: 12},
@@ -17,9 +18,9 @@ function getOptionSelected(option) {
     });    
 }
 
-function calculateLoan(loanData, loanOptionSelected) {
+function calculateLoan(amount, loanOptionSelected) {
     let monthlyLoan = 0;
-    monthlyLoan = loanData.loanApplication / loanOptionSelected.quantity * loanOptionSelected.percent;
+    monthlyLoan = amount / loanOptionSelected.quantity * loanOptionSelected.percent;
     monthlyLoan = toCountryCost('es-CO', monthlyLoan);
     monthlyLoan = monthlyLoan.split(',')[0];
     return monthlyLoan;
@@ -29,8 +30,14 @@ function toCountryCost(country, value) {
     return new Intl.NumberFormat(country).format(value);
 }
 
-function showError(message) {
-    document.querySelector(".resultado").innerText = message;
+function showMessage(message, success) {
+    const resultado = document.getElementById("resultado");
+    if(success) {
+        resultado.style.color = "#00b300";
+    } else {
+        resultado.style.color = "#e00000";
+    }
+    resultado.innerText = message;
 }
 
 // Obteniendo elementos del DOM
@@ -42,10 +49,34 @@ const installments = document.getElementById("installments");
 const loan = document.getElementById("loan");
 
 // Evento para enviar formulario
-document.querySelector(".button").addEventListener("click", function () {
-    console.log(installments.options[installments.selectedIndex].text);
+document.querySelector(".button").addEventListener("click", function (e) {
+    e.preventDefault();
     const isValidAmount = validateAmount(loan.value);
-    if (isValidAmount) {
-        showError("El monto que usted quiere usar no funca");
+    if (!isValidAmount) {
+        return showMessage("El monto que ingresaste no es válido", false);
+    } 
+    const option = installments.options[installments.selectedIndex].value;
+    const loanSelected = getOptionSelected(option);
+    const loanAmount = calculateLoan(loan.value, loanSelected);
+    finalMessage = fname.value + " " + lname.value + ", el valor de sus cuotas sería de: $" + loanAmount;
+    return showMessage(finalMessage, true);
+});
+
+//Evento para validar Correo
+email.addEventListener("keydown", function (e) {
+    const expRegular = /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/;
+    if (this.value.length < 5) {
+        this.classList.remove(["success","failed"]);        
+        return;
     }
+    if (expRegular.test(this.value)) {
+        console.log("Correo Válido");
+        this.classList.add("success");
+        this.classList.remove("failed");
+    } else {
+        console.log("Correo Inválido");
+        this.classList.remove("success");
+        this.classList.add("failed");
+    }
+    
 });
