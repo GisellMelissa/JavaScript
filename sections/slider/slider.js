@@ -1,11 +1,11 @@
 (function(){
     const sliders =  [...document.querySelectorAll('.slider-body')];
-    const arrowNext = document.querySelector ('#next');
+    const arrowNext = document.querySelector('#next');
     const arrowBefore = document.querySelector('#before');
     let value;
 
-    arrowNext.addEventListener('click', ()=>changePosition(1));
-    arrowBefore.addEventListener('click', ()=>changePosition(-1));
+    arrowNext.addEventListener('click', () => changePosition(1));
+    arrowBefore.addEventListener('click', () => changePosition(-1));
 
     function changePosition(change){
         const currentElement = Number (document.querySelector('.slider-body--show').
