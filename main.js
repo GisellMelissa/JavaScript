@@ -50,7 +50,13 @@ class LoanRequest {
                 quantity: 48
             },
         ];
-        return loanOptions.find((items) => {
+        const newOptions = [{
+            option: 5,
+            text: "60 Cuotas",
+            percent: 1.40,
+            quantity: 60
+        }, ...loanOptions];
+        return newOptions.find((items) => {
             return items.option == option;
         });
     }
@@ -93,16 +99,15 @@ const installments = document.getElementById("installments");
 const loan = document.getElementById("loan");
 const loanRequest = new LoanRequest(fname, lname, email, phone, installments, loan);
 
-// Obteniendo valores temporales
+// Obteniendo valores temporales aplicando desestructuración
 if (localStorage.getItem("form")) {
-    const temporalyInfo = JSON.parse(localStorage.getItem("form"));
-    loanRequest.name.value = temporalyInfo.name;
-    loanRequest.surname.value = temporalyInfo.surname;
-    loanRequest.email.value = temporalyInfo.email;
-    loanRequest.phone.value = temporalyInfo.phone;
-    loanRequest.installments.value = temporalyInfo.installments;
-    loanRequest.loan.value = temporalyInfo.loan;
-
+    const {name, surname, email, phone, installments, loan} = JSON.parse(localStorage.getItem("form"));
+    loanRequest.name.value = name;
+    loanRequest.surname.value = surname;
+    loanRequest.email.value = email;
+    loanRequest.phone.value = phone;
+    loanRequest.installments.value = installments;
+    loanRequest.loan.value = loan;
 }
 
 // Evento para enviar formulario
@@ -115,7 +120,8 @@ document.querySelector(".button").addEventListener("click", function (e) {
     const option = loanRequest.installments.options[loanRequest.installments.selectedIndex].value;
     const loanSelected = loanRequest.getOptionSelected(option);
     const loanAmount = loanRequest.calculateLoan(loanRequest.loan.value, loanSelected);
-    finalMessage = loanRequest.name.value + " " + loanRequest.surname.value + ", el valor de sus cuotas sería de: $" + loanAmount;
+    const {name, surname} = loanRequest;
+    finalMessage = name.value + " " + surname.value + ", el valor de tus cuotas mensuales sería de: $" + loanAmount;
     return showMessage(finalMessage, true);
 });
 
@@ -126,12 +132,13 @@ loanRequest.email.addEventListener("keydown", function (e) {
         this.classList.remove(["success", "failed"]);
         return;
     }
+    const logMessage = (expRegular.test(this.value)) ? "Correo Válido" : "Correo Inválido";
     if (expRegular.test(this.value)) {
-        console.log("Correo Válido");
+        console.log(logMessage);
         this.classList.add("success");
         this.classList.remove("failed");
     } else {
-        console.log("Correo Inválido");
+        console.log(logMessage);
         this.classList.remove("success");
         this.classList.add("failed");
     }
