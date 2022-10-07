@@ -81,13 +81,15 @@ function toCountryCost(country, value) {
 }
 
 function showMessage(message, success) {
-    const resultado = document.getElementById("resultado");
-    if (success) {
-        resultado.style.color = "#00b300";
-    } else {
-        resultado.style.color = "#e00000";
-    }
-    resultado.innerText = message;
+    const iconStatus = success ? 'success' : 'error';
+    Swal.fire({
+        position: 'center',
+        icon: iconStatus,
+        text: message,
+        showConfirmButton: true,
+        color: "#000000",
+        backdrop: "rgba(90, 64, 152, 0.3)",
+    });
 }
 
 // Obteniendo elementos del DOM
@@ -111,7 +113,7 @@ if (localStorage.getItem("form")) {
 }
 
 // Evento para enviar formulario
-document.querySelector(".button").addEventListener("click", function (e) {
+document.querySelector("#button").addEventListener("click", function (e) {
     e.preventDefault();
     const isValidAmount = loanRequest.validateAmount(loanRequest.loan.value);
     if (!isValidAmount) {

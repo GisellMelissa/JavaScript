@@ -48,7 +48,7 @@ header nav {
   font-size: 16px;
 }
   
-h1,h2,h3,h4,h5,h6,legend,label {
+h1,h2,h3,h4,h5,h6,legend,label,li {
   color: #614098;
   font-family: 'Open Sans', sans-serif;
 }
@@ -137,11 +137,6 @@ input.success {
 #simulator-title {
   text-align: center;
   margin-top: 40px;
-}
-
-#resultado {
-  font-family: 'Open Sans', sans-serif;
-  color: #5f00f7;
 }
 
 .container{
@@ -259,5 +254,9 @@ input.success {
   border: none;
   cursor: pointer;
   font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.swal2-html-container{
   font-family: 'Open Sans', sans-serif;
 }

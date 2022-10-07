@@ -29,9 +29,6 @@
           <a href="../sections/solicitud.html">Solicita tu Crédito</a>
         </li>
         <li class="navigation-bar-item">
-          <a href="../sections/beneficios.html">Beneficios</a>
-        </li>
-        <li class="navigation-bar-item">
           <a href="../sections/contacto.html">Ayuda</a>
         </li>
       </ul>
@@ -62,7 +59,7 @@
           </div>
           <div class="form-input-container">
             <label for="phone">Teléfono:</label>
-            <input type="number" id="phone" placeholder="123456789" required>
+            <input type="phone" id="phone" placeholder="123456789" required>
           </div>
         </div>
       </fieldset>
@@ -76,17 +73,18 @@
               <option value="2">24</option>
               <option value="3">36</option>
               <option value="4">48</option>
+              <option value="4">60</option>
             </select>
           </div>
           <div>
             <label for="loans">Monto Apróximado del Préstamo:</label>
             <input type="value" id="loan" placeholder="Desde 3'000.000 a 10'000.000" required>
           </div>
-          <button class="button" type="submit">Realizar Simulación</button>
-          <div id="resultado">.</div>
+          <button class="btn btn-success" id="button" type="submit">Realizar Simulación</button>
     </form>
     </div>
   </section>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../main.js"></script>
 </body>
 
