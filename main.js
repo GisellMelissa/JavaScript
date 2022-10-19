@@ -80,6 +80,16 @@ function toCountryCost(country, value) {
     return new Intl.NumberFormat(country).format(value);
 }
 
+async function currencyExchange(from, to) {
+    const response = await fetch('https://api.currencyapi.com/v3/latest?apikey=LCSMPu0q4wv7AM87TJWebnwyr5HcII9hns2I55hj&currencies=' + from + '%2C'+ to, {
+        method: 'GET',
+        redirect: 'follow'
+    });
+    const responseData = await response.json();
+    console.table(responseData)
+    return responseData.data.COP.value;
+}
+
 function showMessage(message, success) {
     const iconStatus = success ? 'success' : 'error';
     Swal.fire({
@@ -113,7 +123,7 @@ if (localStorage.getItem("form")) {
 }
 
 // Evento para enviar formulario
-document.querySelector("#button").addEventListener("click", function (e) {
+document.querySelector("#button").addEventListener("click", async function (e) {
     e.preventDefault();
     const isValidAmount = loanRequest.validateAmount(loanRequest.loan.value);
     if (!isValidAmount) {
@@ -123,7 +133,9 @@ document.querySelector("#button").addEventListener("click", function (e) {
     const loanSelected = loanRequest.getOptionSelected(option);
     const loanAmount = loanRequest.calculateLoan(loanRequest.loan.value, loanSelected);
     const {name, surname} = loanRequest;
-    finalMessage = name.value + " " + surname.value + ", el valor de tus cuotas mensuales sería de: $" + loanAmount;
+    const currencyCoptoUsd = await currencyExchange('USD','COP');
+    const priceInUsd = loanAmount / Math.round(currencyCoptoUsd) * 1000;
+    finalMessage = name.value + " " + surname.value + ", el valor de tus cuotas mensuales sería de: $" + loanAmount + "COP ó $" + toCountryCost('USD', priceInUsd) + "USD";
     return showMessage(finalMessage, true);
 });
 
