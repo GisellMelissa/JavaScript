@@ -10,6 +10,8 @@ header {
   display: flex;
   background-color: #eacdeb;
   padding: 20px;
+  padding-right: 40px;
+  padding-left: 40px;
   align-items: center;
   justify-content: space-between;
 }
@@ -45,7 +47,7 @@ header nav {
   font-family: 'Lobster', cursive;
   color: #000000;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 19px;
 }
   
 h1,h2,h3,h4,h5,h6,legend,label,li {
@@ -99,15 +101,15 @@ label {
 }
   
 button[type="submit"] {
-  width: 200px;
-  padding: 4px;
+  width: 220px;
+  padding: 6px;
   margin-top: 20px;
-  background-color: #614098;
+  background-color: #28a3ff;
   color: #fff;
-  border: none;
+  border: solid 2px #0066b3;
   cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0 0 10px #131313;
+  font-size: 18px;
+  box-shadow: 0 0 10px #131313ab;
   font-family: 'Open Sans', sans-serif;
 }
   
@@ -195,6 +197,7 @@ input.success {
 .slider-img{
   width: 280px;
   height: 280px;
+  border: solid 2px #0066b3;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -249,9 +252,9 @@ input.success {
   width: 200px;
   padding: 8px;
   margin-top: 25px;
-  background-color: #614098;
+  background-color: #28a3ff;
   color: #fff;
-  border: none;
+  border: solid 2px #0066b3;
   cursor: pointer;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
@@ -259,4 +262,77 @@ input.success {
 
 .swal2-html-container{
   font-family: 'Open Sans', sans-serif;
+}
+
+
+.contact-box.contact-box-top {
+  margin-top: -1px;
+  position: relative;
+}
+
+.touch-in{
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.touch-in .contact-box {
+  background-color: #ffe9e9;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  border: solid #28a3ff;
+  display: inline-block;
+  padding: 50px 20px;
+  width: 90%;
+}
+
+.contact-box i {
+  background: #614098;
+  margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.contact-box .contact-icon i {
+  background: transparent;
+  line-height: normal;
+  font-size: 34px;
+  height: auto;
+  width: auto;
+}
+
+.contact-box.theme-bg .contact-icon i {
+  color: #ffffff !important;
+}
+
+.contact-box {
+  display: table-cell;
+  vertical-align: top;
+  background: none;
+}
+
+.justify-content-center {
+  margin-top: 60px;
+  justify-content: center !important;
+}
+
+.contact-form {
+  margin: 80px;
+}
+
+.contact-icon{
+  width: 56px;
+}
+
+@media (max-width: 768px){
+  .touch-in {
+    margin-left: 32px;
+  }
+}
+.subtitle-contact{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

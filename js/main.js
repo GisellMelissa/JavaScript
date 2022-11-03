@@ -97,8 +97,16 @@ function showMessage(message, success) {
         icon: iconStatus,
         text: message,
         showConfirmButton: true,
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
         color: "#000000",
         backdrop: "rgba(90, 64, 152, 0.3)",
+    }).then((onDestroy) => {
+        if(onDestroy.isConfirmed) {
+            Swal.fire({position: 'center', icon: 'info', text: 'Perfecto. En el transcurso del día uno de nuestros asesores te contactará', color: "#000000", backdrop: "rgba(90, 64, 152, 0.3)"});
+        } else {
+            Swal.fire({position: 'center', icon: 'info', text: 'Estaremos atentos a cualquier duda', color: "#000000", backdrop: "rgba(90, 64, 152, 0.3)"});
+        }
     });
 }
 
@@ -135,7 +143,7 @@ document.querySelector("#button").addEventListener("click", async function (e) {
     const {name, surname} = loanRequest;
     const currencyCoptoUsd = await currencyExchange('USD','COP');
     const priceInUsd = loanAmount / Math.round(currencyCoptoUsd) * 1000;
-    finalMessage = name.value + " " + surname.value + ", el valor de tus cuotas mensuales sería de: $" + loanAmount + "COP ó $" + toCountryCost('USD', priceInUsd) + "USD";
+    finalMessage = name.value + " " + surname.value + ", el valor de tus cuotas mensuales sería de: $" + loanAmount + "COP ó $" + toCountryCost('USD', priceInUsd) + "USD. ¿Deseas ampliar la información?";
     return showMessage(finalMessage, true);
 });
 
